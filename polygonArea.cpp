@@ -1,3 +1,5 @@
+//http://zh.wikipedia.org/wiki/多边形
+
 #include <stdio.h>
 
 struct TPoint
