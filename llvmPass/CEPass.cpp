@@ -698,15 +698,6 @@ namespace
         PrintDotGraph();
     }
     
-    void CEPass::PrintDotGraph()
-    {
-        std::ofstream funcs_file("funcs.dot");
-//        boost::write_graphviz(funcs_file, funcG, my_func_label_writer(this));
-        
-        std::ofstream bbs_file("blocks.dot");
-//        boost::write_graphviz(bbs_file, bbG, my_bb_label_writer(this));
-    }
-    
     //TODO finish find single path
     void CEPass::findSinglePath(std::vector<Vertex> *path, Vertex root, Vertex target)
     {
@@ -731,8 +722,23 @@ namespace
             path->insert(path->begin(), root);
         
     }
-    
-    
 }//end of anonymous namespace
+
+
+#include <boost/graph/graphviz.hpp> //graphviz not compatitable with dijkstra
+namespace
+{
+void CEPass::PrintDotGraph()
+{
+    std::ofstream funcs_file("funcs.dot");
+    boost::write_graphviz(funcs_file, funcG, my_func_label_writer(this));
+        
+    std::ofstream bbs_file("blocks.dot");
+    boost::write_graphviz(bbs_file, bbG, my_bb_label_writer(this));
+}
+}
+    
+    
+
 
 
