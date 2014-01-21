@@ -9,6 +9,7 @@
 //#define __STDC_CONSTANT_MACROS
 //#define __STDC_LIMIT_MACROS
 
+
 #include "llvm/ADT/ArrayRef.h"
 #include "llvm/BasicBlock.h"
 #include "llvm/Constants.h"
@@ -266,7 +267,6 @@ namespace
             
             if(F==NULL || tBB==NULL || line==0)
                 continue;
-            
 #ifdef BLOCKSHORTEST
             DEBUG(errs() << "inter-Blocks Dijkstra\n");
             //interprocedural
@@ -398,6 +398,7 @@ namespace
     // \brief get the line number and file of an instruction
     std::pair<unsigned, StringRef> CEPass::getInstInfo(Instruction *I)
     {
+
         if (MDNode *N = I->getMetadata("dbg"))
         {                                           // Here I is an LLVM instruction
             DILocation Loc(N);                      // DILocation is in DebugInfo.h
